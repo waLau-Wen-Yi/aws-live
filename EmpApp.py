@@ -33,6 +33,7 @@ def about():
 #@@@@@@@@@@Employee Management
 @app.route("/shwempdtl", methods=['GET', 'POST'])
 def ShwEmpDtl():
+    routePage = "/EmpMng/[!]ShowEmpDetails.html"
     emp_id = 0
     empData = []
     cursor = db_conn.cursor()
@@ -40,10 +41,11 @@ def ShwEmpDtl():
         emp_id = request.args['emp_id']
         qryRslt = cursor.execute("SELECT * FROM employee1 WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
-            return render_template('/EmpMng/[!]ShowEmpDetails.html', id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
-        empData = cursor.fetchall()
-        print(cursor.fetchone())
-    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = empData)
+            return render_template(routePage, id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
+        else:
+            empData = cursor.fetchall()
+            return render_template(routePage, id = empData[0])
+    return render_template(routePage, id = empData)
 
 #
     @app.route("/addemp", methods=['POST'])
