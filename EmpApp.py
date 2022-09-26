@@ -42,7 +42,7 @@ def ShwEmpDtl():
         if qryRslt == 0:
             return render_template('/EmpMng/[!]ShowEmpDetails.html', id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
         empData = cursor.fetchall()
-    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = empData[0])
+    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = empData[0][0])
 
 #
     @app.route("/addemp", methods=['POST'])
