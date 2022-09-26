@@ -84,7 +84,7 @@ def AddEmp():
 @app.route("/getemp", methods=['GET', 'POST'])
 def EmpCardHorz():
     print("EmpCardHorz() triggered !!!")
-    return render_template('[!]EmpCardHorz.html')
+    return render_template('GetEmp.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
