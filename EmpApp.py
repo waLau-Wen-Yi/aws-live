@@ -33,6 +33,7 @@ def about():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
+    emp_id = ""
     if (methods == ['GET']) :
         emp_id = request.form['emp_id']
         db_conn.cursor().execute("SELECT * FROM employee VALUES (%s)", (emp_id))
