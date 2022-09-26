@@ -44,8 +44,21 @@ def ShwEmpDtl():
             return render_template(routePage, id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
         else:
             empData = cursor.fetchall()
-            return render_template(routePage, id = empData[0])
-    return render_template(routePage, id = empData)
+            return render_template(routePage,
+             id = empData[0], 
+             fname = empData[2],
+             lname = empData[3],
+             position = empData[4],
+             phone = empData[5],
+             email = empData[6],
+             jdate = empData[7],
+             salary = empData[8],
+             location = empData[9],
+             interest = empData[10],
+             dob = empData[11],
+             skills = empData[12]
+             )
+    return render_template(routePage, id = "")
 
 #
     @app.route("/addemp", methods=['POST'])
