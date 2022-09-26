@@ -38,6 +38,10 @@ def GetEmp():
 def ShwEmpCrdHoz():
     return render_template('[!]EmpCardHorz.html')
 
+@app.route("/getempoutput", methods=['GET', 'POST'])
+def GetEmpOutput():
+    return render_template('GetEmpOutput.html')
+
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
