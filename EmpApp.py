@@ -81,7 +81,7 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 
-@app.route("/getemp", methods=['POST'])
+@app.route("/getemp", methods=['GET'])
 def EmpCardHorz():
     return render_template('[!]EmpCardHorz.html')
 
