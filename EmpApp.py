@@ -33,14 +33,10 @@ def about():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
-    emp_id = ""
-    print("methods = {}".format(request.method))
-    print("methods == ['GET'] >>> {}".format(request.method == 'GET'))
     if (request.method == 'GET') :
-        emp_id = request.form['emp_id']
+        emp_id = request.args['emp_id']
         db_conn.cursor().execute("SELECT * FROM employee VALUES (%s)", (emp_id))
         db_conn.commit()
-    print("emp_id = {}".format(emp_id))
     return render_template('[!]ShowEmpDetails.html', id=emp_id)
 
 @app.route("/shwempcrdhoz", methods=['GET', 'POST'])
