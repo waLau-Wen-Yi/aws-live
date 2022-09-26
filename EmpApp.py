@@ -34,13 +34,15 @@ def about():
 @app.route("/shwempdtl", methods=['GET', 'POST'])
 def ShwEmpDtl():
     emp_id = 0
+    empData = []
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
-        result = cursor.execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
-        print(result)
-        emp_id = cursor.fetchall()
-    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = emp_id)
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
+        if qryRslt == 0:
+            return render_template('/EmpMng/[!]ShowEmpDetails.html', id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
+        empData = cursor.fetchall()
+    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = empData[0])
 
 #
     @app.route("/addemp", methods=['POST'])
