@@ -30,6 +30,10 @@ def home():
 def about():
     return render_template('www.intellipaat.com')
 
+@app.route("/getemp", methods=['GET', 'POST'])
+def EmpCardHorz():
+    print("EmpCardHorz() triggered !!!")
+    return render_template('GetEmp.html')
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -79,12 +83,6 @@ def AddEmp():
 
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
-
-
-@app.route("/getemp", methods=['GET', 'POST'])
-def EmpCardHorz():
-    print("EmpCardHorz() triggered !!!")
-    return render_template('GetEmp.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
