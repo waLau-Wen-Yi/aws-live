@@ -32,9 +32,9 @@ def about():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
-    return render_template('GetEmp.html')
+    return render_template('[!]ShowEmpDetails.html')
 
-@app.route("/showempcardhorz", methods=['GET', 'POST'])
+@app.route("/shwempcrdhoz", methods=['GET', 'POST'])
 def ShwEmpCrdHoz():
     return render_template('[!]EmpCardHorz.html')
 
