@@ -35,7 +35,7 @@ def about():
 def ShwEmpDtl():
     emp_id = 0
     if (request.method == 'GET'):
-        emp_id = request.form['emp_id']
+        emp_id = request.args['emp_id']
         db_conn.cursor().execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
         db_conn.commit()
     return render_template('/EmpMng/[!]ShowEmpDetails.html', id = emp_id)
