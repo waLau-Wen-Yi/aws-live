@@ -36,7 +36,8 @@ def GetEmp():
 
 @app.route("/shwempcrdhoz", methods=['GET', 'POST'])
 def ShwEmpCrdHoz():
-    return render_template('[!]EmpCardHorz.html')
+    emp_id = request.form['emp_id']
+    return render_template('[!]EmpCardHorz.html', id=emp_id)
 
 @app.route("/getempoutput", methods=['GET', 'POST'])
 def GetEmpOutput():
