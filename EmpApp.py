@@ -28,6 +28,7 @@ def home():
 
 @app.route("/about", methods=['POST'])
 def about():
+    print("about() triggered !!!")
     return render_template('www.intellipaat.com')
 
 
