@@ -21,32 +21,24 @@ db_conn = connections.Connection(
 output = {}
 table = 'employee'
 
-
+#@@@@@@@@@@General
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('Home.html')
 
-
-@app.route("/about", methods=['GET', 'POST'])
+@app.route("/about", methods=['POST'])
 def about():
     return render_template('www.intellipaat.com')
 
-@app.route("/getemp", methods=['GET', 'POST'])
-def GetEmp():
-    if (request.method == 'GET') :
-        emp_id = request.args['emp_id']
+#@@@@@@@@@@Employee Management
+@app.route("/shwempdtl", methods=['GET', 'POST'])
+def ShwEmpDtl():
+    emp_id = 0
+    if (request.method == 'GET'):
+        emp_id = request.form['emp_id']
         db_conn.cursor().execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
         db_conn.commit()
-    return render_template('[!]ShowEmpDetails.html', id=emp_id)
-
-@app.route("/shwempcrdhoz", methods=['GET', 'POST'])
-def ShwEmpCrdHoz():
-    emp_id = request.form['emp_id']
-    return render_template('[!]EmpCardHorz.html', id=emp_id)
-
-@app.route("/getempoutput", methods=['GET', 'POST'])
-def GetEmpOutput():
-    return render_template('GetEmpOutput.html')
+    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = emp_id)
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -97,5 +89,9 @@ def AddEmp():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
 
+#@@@@@@@@@@Performance Tracker
+
+
+#DON'T TOUCH!
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
