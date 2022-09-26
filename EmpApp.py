@@ -34,9 +34,9 @@ def about():
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
     emp_id = ""
-    print("methods = {}".format(methods))
-    print("methods == ['GET'] >>> {}".format(methods == ['GET']))
-    if (methods == ['GET']) :
+    print("methods = {}".format(request.method))
+    print("methods == ['GET'] >>> {}".format(request.method == 'GET'))
+    if (request.method == 'GET') :
         emp_id = request.form['emp_id']
         db_conn.cursor().execute("SELECT * FROM employee VALUES (%s)", (emp_id))
         db_conn.commit()
