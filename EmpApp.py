@@ -32,8 +32,11 @@ def about():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
-    print("GetEmp() triggered !!!")
     return render_template('GetEmp.html')
+
+@app.route("/showempcardhorz", methods=['GET', 'POST'])
+def GetEmp():
+    return render_template('[!]EmpCardHorz.html')
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
