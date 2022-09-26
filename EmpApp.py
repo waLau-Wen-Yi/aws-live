@@ -32,7 +32,8 @@ def about():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
-    return render_template('[!]ShowEmpDetails.html')
+    emp_id = request.form['emp_id']
+    return render_template('[!]ShowEmpDetails.html', id=emp_id)
 
 @app.route("/shwempcrdhoz", methods=['GET', 'POST'])
 def ShwEmpCrdHoz():
