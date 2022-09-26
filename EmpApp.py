@@ -34,11 +34,12 @@ def about():
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
     emp_id = ""
+    print("methods == ['GET'] >>> " + methods == ['GET'])
     if (methods == ['GET']) :
         emp_id = request.form['emp_id']
         db_conn.cursor().execute("SELECT * FROM employee VALUES (%s)", (emp_id))
         db_conn.commit()
-    print(emp_id)
+    print("emp_id = " + emp_id)
     return render_template('[!]ShowEmpDetails.html', id=emp_id)
 
 @app.route("/shwempcrdhoz", methods=['GET', 'POST'])
