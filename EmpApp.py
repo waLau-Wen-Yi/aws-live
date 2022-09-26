@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -32,9 +33,11 @@ def about():
 
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
-    emp_id = request.form['emp_id']
-    db_conn.cursor().execute("SELECT * FROM employee VALUES (%s)", (emp_id))
-    print(emp_id)
+    if (methods == ['GET']) :
+        emp_id = request.form['emp_id']
+        db_conn.cursor().execute("SELECT * FROM employee VALUES (%s)", (emp_id))
+        db_conn.commit()
+        print(emp_id)
     return render_template('[!]ShowEmpDetails.html', id=emp_id)
 
 @app.route("/shwempcrdhoz", methods=['GET', 'POST'])
