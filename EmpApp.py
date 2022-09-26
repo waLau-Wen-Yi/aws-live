@@ -19,7 +19,7 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'employee'
+table = 'employee1'
 
 #@@@@@@@@@@General
 @app.route("/", methods=['GET', 'POST'])
@@ -43,7 +43,7 @@ def ShwEmpDtl():
             return render_template('/EmpMng/[!]ShowEmpDetails.html', id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
         empData = cursor.fetchall()
         print(empData)
-    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = empData[0])
+    return render_template('/EmpMng/[!]ShowEmpDetails.html', id = empData)
 
 #
     @app.route("/addemp", methods=['POST'])
