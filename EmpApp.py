@@ -81,5 +81,9 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 
+@app.route("/getemp", methods=['POST'])
+def EmpCardHorz():
+    return render_template('[!]EmpCardHorz.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
