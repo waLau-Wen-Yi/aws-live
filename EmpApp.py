@@ -39,7 +39,7 @@ def ShwEmpDtl():
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
         print("SELECT * FROM (%s) WHERE emp_id = (%s)", (table, emp_id))
-        qryRslt = cursor.execute("SELECT * FROM (%s) WHERE emp_id = (%s)", (table, emp_id))
+        qryRslt = cursor.execute("SELECT * FROM employee1 WHERE emp_id = (%s)", (emp_id))
         if qryRslt == 0:
             return render_template('/EmpMng/[!]ShowEmpDetails.html', id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
         empData = cursor.fetchall()
