@@ -31,8 +31,8 @@ def about():
     return render_template('www.intellipaat.com')
 
 @app.route("/getemp", methods=['GET', 'POST'])
-def EmpCardHorz():
-    print("EmpCardHorz() triggered !!!")
+def GetEmp():
+    print("GetEmp() triggered !!!")
     return render_template('GetEmp.html')
 
 @app.route("/addemp", methods=['POST'])
