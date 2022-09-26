@@ -35,7 +35,7 @@ def GetEmp():
     return render_template('GetEmp.html')
 
 @app.route("/showempcardhorz", methods=['GET', 'POST'])
-def GetEmp():
+def ShwEmpCrdHoz():
     return render_template('[!]EmpCardHorz.html')
 
 @app.route("/addemp", methods=['POST'])
