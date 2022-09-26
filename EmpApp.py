@@ -34,6 +34,7 @@ def about():
 @app.route("/getemp", methods=['GET', 'POST'])
 def GetEmp():
     emp_id = ""
+    print("methods = {}".format(methods))
     print("methods == ['GET'] >>> {}".format(methods == ['GET']))
     if (methods == ['GET']) :
         emp_id = request.form['emp_id']
