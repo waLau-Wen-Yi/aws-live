@@ -62,9 +62,9 @@ def ShwEmpDtl():
 
 @app.route("/edtempdtl", methods=['GET', 'POST'])
 def EdtEmpDtl():
+    routePage = "/EmpMng/[!]EditEmpDetails.html"
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
-        routePage = "/EmpMng/[!]EditEmpDetails.html"
         emp_id = request.args['emp_id']
         qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
@@ -85,7 +85,7 @@ def EdtEmpDtl():
              dob = empData[0][11],
              skills = empData[0][12]
              )
-    return render_template(routePage, id = "")
+    return render_template(routePage)
 
 #
     @app.route("/addemp", methods=['POST'])
