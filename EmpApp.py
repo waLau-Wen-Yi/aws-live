@@ -42,14 +42,21 @@ def RgsEmp():
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
+        emp_fname = request.form['emp_fname']
+        emp_lname = request.form['emp_lname']
+        emp_position = request.form['emp_position']
         emp_id = request.form['emp_id']
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        pri_skill = request.form['pri_skill']
-        location = request.form['location']
+        emp_phone = request.form['emp_phone']
+        emp_email = request.form['emp_email']
+        emp_jdate = request.form['emp_jdate']
+        emp_salary = request.form['emp_salary']
+        emp_location = request.form['emp_location']
+        emp_interest = request.form['emp_interest']
+        emp_dob = request.form['emp_dob']
+        emp_skills = request.form['emp_skills']
         emp_image_file = request.files['emp_image_file']
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
 
         if emp_image_file.filename == "":
@@ -57,11 +64,14 @@ def AddEmp():
 
         try:
 
-            cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+            cursor.execute(insert_sql, 
+                (emp_id, "", emp_fname,
+                 emp_lname, emp_position, emp_phone,
+                  emp_email, emp_jdate, emp_salary,
+                   emp_location, emp_interest, emp_dob, emp_skills))
             db_conn.commit()
-            emp_name = "" + first_name + " " + last_name
             # Uplaod image file in S3 #
-            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_profile_pic"
             s3 = boto3.resource('s3')
 
             try:
@@ -80,6 +90,9 @@ def AddEmp():
                     custombucket,
                     emp_image_file_name_in_s3)
 
+                cursor.execute("UPDATE employee SET imgurl = (%s) WHERE id = (%s)", object_url, emp_id)
+                db_conn.commit()
+
             except Exception as e:
                 return str(e)
 
@@ -87,8 +100,21 @@ def AddEmp():
             cursor.close()
 
         print("all modification done...")
-        return render_template('AddEmpOutput.html', name=emp_name)
-
+        return render_template('/EmpMng/ShowEmpDetails.html', 
+             id = emp_id, 
+             imgurl = object_url,
+             fname = emp_fname,
+             lname = emp_lname,
+             position = emp_position,
+             phone = emp_phone,
+             email = emp_email,
+             jdate = emp_jdate,
+             salary = emp_salary,
+             location = emp_location,
+             interest = emp_interest,
+             dob = emp_dob,
+             skills = emp_skills
+             )
 
 @app.route("/shwempdtl", methods=['GET', 'POST'])
 def ShwEmpDtl():
