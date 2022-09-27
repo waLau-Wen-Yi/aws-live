@@ -158,6 +158,7 @@ def RmvEmp():
         else:
             empData = cursor.fetchall()
             return render_template(routePage,
+             id = empData[0][0],
              fname = empData[0][2],
              lname = empData[0][3],
              position = empData[0][4],
