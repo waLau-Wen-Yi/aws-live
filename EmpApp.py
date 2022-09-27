@@ -280,7 +280,7 @@ def PrfTrkEdt():
 
 @app.route('/prfedtact', methods=['POST'])
 def PrfEdtAct():
-    routePage = "/PrfTrk/PrfTrkEdt.html"
+    routePage = "/PrfTrk/PrfTrk.html"
     cursor = db_conn.cursor()
     emp_id = request.form['emp_id']
     goal_id = request.form['prf_id']
