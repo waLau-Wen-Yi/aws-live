@@ -215,7 +215,7 @@ def PrfTrk():
             return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
         else:
             empData = cursor.fetchall()
-            qryRslt = cursor.execute("SELECT * FROM performance WHERE prf_id = prf(%s)", (emp_id))
+            qryRslt = cursor.execute("SELECT * FROM performance WHERE prf_id = 'prf(%s)'", (emp_id))
             if (qryRslt == 1):
                 prfData = cursor.fetchall()
                 return render_template(routePage,
