@@ -64,7 +64,7 @@ def ShwEmpDtl():
 def EdtEmpDtl():
     cursor = db_conn.cursor()
     if (request.method == 'POST'):
-        return render_template("/EmpMng/[!]ShowEmpDetails.html", id = "SOMETHING IS WRONG, PLEASE SEARCH EXISTING ID BEFORE EDIT")
+        return render_template("/EmpMng/[!]ShowEmpDetails.html", id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
     if (request.method == 'GET'):
         routePage = "/EmpMng/[!]EditEmpDetails.html"
         emp_id = request.args['emp_id']
