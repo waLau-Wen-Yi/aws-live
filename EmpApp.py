@@ -293,7 +293,7 @@ def PrfEdtAct():
         (goal, objective, grade, pros, cons, goal_id))
     db_conn.commit()
 
-    emp_id = request.args['emp_id']
+    emp_id = request.form['emp_id']
     qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
     if qryRslt == 0:
         return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
