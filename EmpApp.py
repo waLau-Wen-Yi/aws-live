@@ -91,9 +91,8 @@ def EdtEmpDtl():
              )
     return render_template(routePage)
 
-#
-    @app.route("/addemp", methods=['POST'])
-    def AddEmp():
+@app.route("/addemp", methods=['POST'])
+def AddEmp():
         emp_id = request.form['emp_id']
         first_name = request.form['first_name']
         last_name = request.form['last_name']
