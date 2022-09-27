@@ -1,4 +1,5 @@
 from crypt import methods
+import re
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -41,6 +42,35 @@ def ShwEmpDtl():
         qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
             return render_template(routePage, id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
+        else:
+            empData = cursor.fetchall()
+            return render_template(routePage,
+             id = empData[0][0], 
+             fname = empData[0][2],
+             lname = empData[0][3],
+             position = empData[0][4],
+             phone = empData[0][5],
+             email = empData[0][6],
+             jdate = empData[0][7],
+             salary = empData[0][8],
+             location = empData[0][9],
+             interest = empData[0][10],
+             dob = empData[0][11],
+             skills = empData[0][12]
+             )
+    return render_template(routePage, id = "")
+
+@app.route("/edtempdtl", methods=['GET', 'POST'])
+def EdtEmpDtl():
+    cursor = db_conn.cursor()
+    if (request.method == 'POST'):
+        return render_template("/EmpMng/[!]ShowEmpDetails.html", id = "SOMETHING IS WRONG, PLEASE SEARCH EXISTING ID BEFORE EDIT")
+    if (request.method == 'GET'):
+        routePage = "/EmpMng/[!]EditEmpDetails.html"
+        emp_id = request.args['emp_id']
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
+        if qryRslt == 0:
+            return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
         else:
             empData = cursor.fetchall()
             return render_template(routePage,
