@@ -31,6 +31,10 @@ def about():
     return render_template('www.intellipaat.com')
 
 #@@@@@@@@@@Employee Management
+@app.route("/empmng", methods=['GET', 'POST'])
+def EmpMng():
+    return render_template('[!]EditEmpDetails.html')
+
 @app.route("/shwempdtl", methods=['GET', 'POST'])
 def ShwEmpDtl():
     routePage = "/EmpMng/[!]ShowEmpDetails.html"
