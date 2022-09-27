@@ -242,6 +242,10 @@ def PrfTrk():
                 )
     return render_template(routePage)
 
+@app.route('/prftrkedt', methods=['GET'])
+def PrfTrkEdt():
+    return render_template('/PrfTrk/PrfTrkEdt.html')
+
 #DON'T TOUCH!
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
