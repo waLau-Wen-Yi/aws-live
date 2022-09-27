@@ -165,6 +165,23 @@ def RmvEmp():
              )
     return render_template(routePage)
 
+@app.route('/rmvempcmfrm', methods=['GET'])
+def RmvEmpCmfrm():
+    routePage = "/EmpMng/[!]RemoveEmp.html"
+    cursor = db_conn.cursor()
+    emp_id = request.args['emp_id']
+    qryRslt = cursor.execute("DELETE * FROM employee WHERE id = (%s)", (emp_id))
+    if qryRslt == 0:
+            return render_template(routePage, id = "ID (%s) HAS BEEN DELETED".format(emp_id))
+    else:
+        empData = cursor.fetchall()
+        return render_template(routePage,
+        fname = empData[0][2],
+        lname = empData[0][3],
+        position = empData[0][4],
+        jdate = empData[0][7]
+        )
+
 #@@@@@@@@@@Performance Tracker
 
 

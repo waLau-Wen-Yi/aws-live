@@ -18,11 +18,10 @@
     <form action="/edtempdtl" id="emp_id_form" method="get">
         <p>Employee ID:
             &nbsp;
-            <input autofocus="" name="emp_id" size="40" style="width:100px;height:30px;font-size:14pt;"
-                type="text" />
+            <input autofocus="" name="emp_id" size="40" style="width:100px;height:30px;font-size:14pt;" type="text" />
             <strong>
-                <button formaction=""
-                    style="background: grey; height: 40px; width: 100px; color:white; font:oblique;" type="submit">
+                <button formaction="" style="background: grey; height: 40px; width: 100px; color:white; font:oblique;"
+                    type="submit">
                     SEARCH
                 </button>
             </strong>
@@ -30,7 +29,7 @@
     </form>
 
     <hr />
-<br>
+    <br>
 
     <table border="1" cellpadding="1" cellspacing="1" style="width:500px;">
         <tbody>
@@ -90,11 +89,26 @@
 
 <center>
     <p>
-        <font color="black" size="5" style="font-family: avenir"><button
-                style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">MAIN
-                MENU</button>&nbsp;<button
-                style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
-                type="submit">REMOVE</button></font>
+        <font color="black" size="5" style="font-family: avenir">
+            <form action="/" method="post">
+                <button style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+                    type="submit">MAIN
+                    MENU
+                </button>
+                    &nbsp;
+                    <button formaction="/empmng"
+                    style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+                    type="submit">
+                    BACK
+                </button>
+                &nbsp;
+                <button formaction="/rmvempcmfrm"
+                    style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+                    type="submit">
+                    REMOVE
+                </button>
+            </form>
+        </font>
     </p>
 </center>
 
