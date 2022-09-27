@@ -204,7 +204,42 @@ def RmvEmpCmfrm():
         return render_template(routePage, id = "SOMETHING IS WRONG")
 
 #@@@@@@@@@@Performance Tracker
-
+@app.route('/prftrk', methods=['GET', 'POST'])
+def PrfTrk():
+    routePage = "/PrfTrk/PrfTrk.html"
+    cursor = db_conn.cursor()
+    if (request.method == 'GET'):
+        emp_id = request.args['emp_id']
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
+        if qryRslt == 0:
+            return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
+        else:
+            empData = cursor.fetchall()
+            qryRslt = cursor.execute("SELECT * FROM performance WHERE id = (Prf%s)", (emp_id))
+            if (qryRslt == 1):
+                prfData = cursor.fetchall()
+                return render_template(routePage,
+                id = empData[0][0],
+                fname = empData[0][2],
+                lname = empData[0][3],
+                position = empData[0][4],
+                jdate = empData[0][7],
+                goal = prfData[0][2],
+                objective = prfData[0][3],
+                grade = prfData[0][4],
+                pros = prfData[0][5],
+                cons = prfData[0][6]
+                )
+            else:
+                return render_template(routePage,
+                id = empData[0][0],
+                fname = empData[0][2],
+                lname = empData[0][3],
+                position = empData[0][4],
+                jdate = empData[0][7],
+                goal = "DATA NOT FOUNDED"
+                )
+    return render_template(routePage)
 
 #DON'T TOUCH!
 if __name__ == '__main__':
