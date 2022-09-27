@@ -282,6 +282,7 @@ def PrfTrkEdt():
 def PrfEdtAct():
     routePage = "/PrfTrk/PrfTrkEdt.html"
     cursor = db_conn.cursor()
+    emp_id = request.form['emp_id']
     goal_id = request.form['prf_id']
     goal = request.form['prf_goal']
     objective = request.form['prf_obj']
@@ -293,7 +294,6 @@ def PrfEdtAct():
         (goal, objective, grade, pros, cons, goal_id))
     db_conn.commit()
 
-    emp_id = request.form['emp_id']
     qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
     if qryRslt == 0:
         return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
