@@ -16,10 +16,9 @@ db_conn = connections.Connection(
     user=customuser,
     password=custompass,
     db=customdb
-
 )
-output = {}
-table = 'employee1'
+
+output = {}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 
 #@@@@@@@@@@General
 @app.route("/", methods=['GET', 'POST'])
@@ -39,7 +38,7 @@ def ShwEmpDtl():
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
-        qryRslt = cursor.execute("SELECT * FROM employee1 WHERE id = (%s)", (emp_id))
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
             return render_template(routePage, id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
         else:
