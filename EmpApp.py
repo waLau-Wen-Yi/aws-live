@@ -33,12 +33,12 @@ def about():
 #@@@@@@@@@@Employee Management
 @app.route("/empmng", methods=['GET', 'POST'])
 def EmpMng():
-    return render_template('/EmpMng/[!]EmpMngHome.html')
+    return render_template('/EmpMng/EmpMngHome.html')
 
 
 @app.route("/rgsemp", methods=['GET', 'POST'])
 def RgsEmp():
-    return render_template('/EmpMng/[!]RegisEmp.html')
+    return render_template('/EmpMng/RegisEmp.html')
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -92,7 +92,7 @@ def AddEmp():
 
 @app.route("/shwempdtl", methods=['GET', 'POST'])
 def ShwEmpDtl():
-    routePage = "/EmpMng/[!]ShowEmpDetails.html"
+    routePage = "/EmpMng/ShowEmpDetails.html"
     emp_id = 0
     empData = []
     cursor = db_conn.cursor()
@@ -121,7 +121,7 @@ def ShwEmpDtl():
 
 @app.route("/edtempdtl", methods=['GET', 'POST'])
 def EdtEmpDtl():
-    routePage = "/EmpMng/[!]EditEmpDetails.html"
+    routePage = "/EmpMng/EditEmpDetails.html"
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
@@ -148,7 +148,7 @@ def EdtEmpDtl():
 
 @app.route('/rmvemp', methods=['GET', 'POST'])
 def RmvEmp():
-    routePage = "/EmpMng/[!]RemoveEmp.html"
+    routePage = "/EmpMng/RemoveEmp.html"
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
@@ -167,7 +167,7 @@ def RmvEmp():
 
 @app.route('/rmvempcmfrm', methods=['GET'])
 def RmvEmpCmfrm():
-    routePage = "/EmpMng/[!]RemoveEmp.html"
+    routePage = "/EmpMng/RemoveEmp.html"
     cursor = db_conn.cursor()
     emp_id = request.args['emp_id']
     qryRslt = cursor.execute("DELETE * FROM employee WHERE id = (%s)", (emp_id))
