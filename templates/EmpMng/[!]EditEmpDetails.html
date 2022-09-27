@@ -1,78 +1,544 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Edit Employee Details</title>
 </head>
 <center>
 	<font color="black" size="5" style="font-family: avenir">
-<h1 style="text-align:center"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><span style="color:#3498db;"><span style="font-size:26px;"><strong><span style="font-family: avenir;">Employee Management: Edit Employee Details</span></strong></span></span></font></font></font></font></h1>
+		<h1 style="text-align:center"><span style="color:#3498db;"><span style="font-size:26px;"><strong><span
+							style="font-family: avenir;">Employee
+							Management: Edit Employee Details</span></strong></span></span>
+		</h1>
 
-<hr />
-<form action="/edtempdtl" method="get">
-<p><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir">Employee ID:</font></font></font>&nbsp;<input autofocus="" name="emp_id" size="40" style="width:100px;height:30px;font-size:14pt;" type="text" /><strong><button formaction="" style="background: grey; height: 40px; width: 100px; color:white; font:oblique;" type="submit">SEARCH</button></strong> </font> </font></font></p>
-</form>
+		<hr />
+		<form action="/edtempdtl" method="get">
+			<p>Employee ID:&nbsp;<input autofocus="" name="emp_id" size="40"
+					style="width:100px;height:30px;font-size:14pt;" type="text" /><strong><button formaction=""
+						style="background: grey; height: 40px; width: 100px; color:white; font:oblique;"
+						type="submit">SEARCH</button></strong>
+			</p>
+		</form>
 
-<hr />
-<table border="1" cellpadding="1" cellspacing="1" style="width:100%;">
-	<tbody>
-		<tr>
-			<td style="width: 15%; text-align: right;"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir">Profile picture URL:</font></font></font></font></td>
-			<td colspan="3" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_image_url" value="{{ imgurl }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="width: 15%; text-align: right;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">First name:</font></font></font></font></font></font></font></font></font></font></td>
-			<td style="width: 35%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_fname" value="{{ fname }}" size="40" style="width:98%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-			<td style="text-align: right; width: 15%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Last name:</font></font></font></font></font></font></font></font></font></font></font></font></td>
-			<td style="width: 35%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_lname" value="{{ lname }}" size="40" style="width:98%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Position:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_position" value="{{ location }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Employee ID:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_id" value="{{ id }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Handphone number:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_phone" value="{{ phone }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Email:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_email" value="{{ email }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Join date:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_jdate" value="{{ jdate }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Salary:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_salary" value="{{ salary }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Accommodation address:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_location" value="{{ location }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Interest:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_interest" value="{{ interest}}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Date of birth:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_dob" value="{{ dob }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-		<tr>
-			<td style="text-align: right; width: 15%;"><font color="black" size="5" style="font-family: avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir">Primary skills:</font></font></font></font></font></font></font></font></font></font></td>
-			<td colspan="3" rowspan="1" style="width: 85%;"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><font color="black"><font size="5"><font style="font-family:avenir"><input autofocus="" name="emp_skills" value="{{ skills }}" size="40" style="width:99%;height:30px;font-size:14pt;" type="text" /></font></font></font></font></font></font></font></font></font></font></font></font></td>
-		</tr>
-	</tbody>
-</table>
+		<hr />
+		<table border="1" cellpadding="1" cellspacing="1" style="width:100%;">
+			<tbody>
+				<tr>
+					<td style="width: 15%; text-align: right;">Profile picture URL:
+					</td>
+					<td colspan="3" style="width: 85%;">
+						<input autofocus="" name="emp_image_url" value="{{ imgurl }}" size="40"
+							style="width:99%;height:30px;font-size:14pt;" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 15%; text-align: right;">
+						First name:
+					</td>
+					<td style="width: 35%;">
+						<input autofocus="" name="emp_fname" value="{{ fname }}" size="40"
+							style="width:98%;height:30px;font-size:14pt;" type="text" />
+					</td>
+					<td style="text-align: right; width: 15%;">
+						Last name:
+					</td>
+					<td style="width: 35%;">
+						<input autofocus="" name="emp_lname" value="{{ lname }}" size="40"
+							style="width:98%;height:30px;font-size:14pt;" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						Position:
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<input autofocus="" name="emp_position" value="{{ position }}" size="40"
+							style="width:99%;height:30px;font-size:14pt;" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						Employee ID:
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<input autofocus="" name="emp_id" value="{{ id }}" size="40"
+							style="width:99%;height:30px;font-size:14pt;" type="text" />
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Handphone number:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_phone" value="{{ phone }}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Email:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_email" value="{{ email }}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Join date:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_jdate" value="{{ jdate }}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Salary:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_salary" value="{{ salary }}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Accommodation address:
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_location" value="{{ location }}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Interest:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_interest" value="{{ interest}}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Date of birth:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_dob" value="{{ dob }}" size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: right; width: 15%;">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black">
+								<font size="5">
+									<font style="font-family:avenir">
+										<font color="black">
+											<font size="5">
+												<font style="font-family:avenir">
+													<font color="black">
+														<font size="5">
+															<font style="font-family:avenir">Primary skills:</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+					<td colspan="3" rowspan="1" style="width: 85%;">
+						<font color="black">
+							<font size="5">
+								<font style="font-family:avenir">
+									<font color="black">
+										<font size="5">
+											<font style="font-family:avenir">
+												<font color="black">
+													<font size="5">
+														<font style="font-family:avenir">
+															<font color="black">
+																<font size="5">
+																	<font style="font-family:avenir"><input autofocus=""
+																			name="emp_skills" value="{{ skills }}"
+																			size="40"
+																			style="width:99%;height:30px;font-size:14pt;"
+																			type="text" /></font>
+																</font>
+															</font>
+														</font>
+													</font>
+												</font>
+											</font>
+										</font>
+									</font>
+								</font>
+							</font>
+						</font>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
-<p><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><button formaction="" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">MAIN MENU</button>&nbsp;</font></font></font></font><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><button formaction="" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">REMOVE</button>&nbsp;</font></font></font></font><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><button formaction="" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">CONFIRM</button>&nbsp;</font></font></font></font></p>
+		<p>
+			<form action="/" method="post">
+				<font color="black" size="5" style="font-family: avenir">
+					<font color="black" size="5" style="font-family: avenir">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black" size="5" style="font-family: avenir">
+								<button formaction=""
+									style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+									type="submit">
+									MAIN MENU
+								</button>
+								&nbsp;
+							</font>
+						</font>
+					</font>
+				</font>
+			</form>
+			
+			
+			<form action="/rmvemp" method="get">
+				<font color="black" size="5" style="font-family: avenir">
+					<font color="black" size="5" style="font-family: avenir">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black" size="5" style="font-family: avenir">
+								<button formaction=""
+									style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+									type="submit">
+									REMOVE</button>
+								&nbsp;
+							</font>
+						</font>
+					</font>
+				</font>
+			</form>
+			
+			
+			<form action="/edtemp" method="post">
+				<font color="black" size="5" style="font-family: avenir">
+					<font color="black" size="5" style="font-family: avenir">
+						<font color="black" size="5" style="font-family: avenir">
+							<font color="black" size="5" style="font-family: avenir">
+								<button formaction=""
+									style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+									type="submit">
+									CONFIRM</button>&nbsp;
+							</font>
+						</font>
+					</font>
+				</font>
+			</form>
+			
+		</p>
 
-<p><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir"><font color="black" size="5" style="font-family: avenir">&nbsp;</font></font></font></font></p>
 
-
-</font>
+	</font>
 </center>
+
 </html>
