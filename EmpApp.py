@@ -170,7 +170,7 @@ def RmvEmpCmfrm():
     routePage = "/EmpMng/RemoveEmp.html"
     cursor = db_conn.cursor()
     emp_id = request.args['emp_id']
-    qryRslt = cursor.execute("DELETE * FROM employee WHERE id = (%s)", (emp_id))
+    qryRslt = cursor.execute("DELETE * FROM employee WHERE id = %s", (emp_id))
     if qryRslt == 0:
             return render_template(routePage, id = "ID (%s) HAS BEEN DELETED".format(emp_id))
     else:
