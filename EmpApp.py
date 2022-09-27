@@ -278,6 +278,52 @@ def PrfTrkEdt():
             goal = "DATA NOT FOUNDED"
             )
 
+@app.route('/prfedtact', methods=['POST'])
+def PrfEdtAct():
+    routePage = "/PrfTrk/PrfTrkEdt.html"
+    cursor = db_conn.cursor()
+    goal = request.form('prf_goal')
+    objective = request.form('prf_obj')
+    grade = request.form('prf_grade')
+    pros = request.form('prf_pros')
+    cons = request.form('prf_cons')
+    cursor.execute(
+        "UPDATE performance SET prf_goal = (%s), prf_obj = (%s), prf_grade = (%s), prf_pros = (%s), prf_cons = (%s) WHERE prf_id = (%s)",
+        (goal, objective, grade, pros, cons))
+    db_conn.commit()
+
+    emp_id = request.args['emp_id']
+    qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
+    if qryRslt == 0:
+        return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
+    else:
+        empData = cursor.fetchall()
+        goal_id = 'prf{}'.format(emp_id)
+        qryRslt = cursor.execute("SELECT * FROM performance WHERE prf_id = %s", (goal_id))
+        if (qryRslt == 1):
+            prfData = cursor.fetchall()
+            return render_template(routePage,
+            id = empData[0][0],
+            fname = empData[0][2],
+            lname = empData[0][3],
+            position = empData[0][4],
+            jdate = empData[0][7],
+            goal = prfData[0][1],
+            objective = prfData[0][2],
+            grade = prfData[0][3],
+            pros = prfData[0][4],
+            cons = prfData[0][5]
+            )
+        else:
+            return render_template(routePage,
+            id = empData[0][0],
+            fname = empData[0][2],
+            lname = empData[0][3],
+            position = empData[0][4],
+            jdate = empData[0][7],
+            goal = "DATA NOT FOUNDED"
+            )
+
 #DON'T TOUCH!
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
