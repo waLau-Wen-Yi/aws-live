@@ -282,6 +282,7 @@ def PrfTrkEdt():
 def PrfEdtAct():
     routePage = "/PrfTrk/PrfTrkEdt.html"
     cursor = db_conn.cursor()
+    goal_id = request.form('prf_id')
     goal = request.form('prf_goal')
     objective = request.form('prf_obj')
     grade = request.form('prf_grade')
@@ -289,7 +290,7 @@ def PrfEdtAct():
     cons = request.form('prf_cons')
     cursor.execute(
         "UPDATE performance SET prf_goal = (%s), prf_obj = (%s), prf_grade = (%s), prf_pros = (%s), prf_cons = (%s) WHERE prf_id = (%s)",
-        (goal, objective, grade, pros, cons))
+        (goal, objective, grade, pros, cons, goal_id))
     db_conn.commit()
 
     emp_id = request.args['emp_id']
