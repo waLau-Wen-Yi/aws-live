@@ -11,7 +11,7 @@
 							Management: Register New Employee</span></strong></span></span>
 		</h1>
 
-		<form action="/" method="post">
+		<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
 			<table border="1" cellpadding="1" cellspacing="1" style="width:100%;">
 				<tbody>
 					<tr>
@@ -132,13 +132,13 @@
 
 			<p>
 
-				<button style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">
+				<button formaction="/" style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">
 					MAIN MENU
 				</button>
 				<button formaction="/empmng"
 					style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">
 					BACK</button>
-				<button formaction="/addemp"
+				<button
 					style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">
 					REGISTER</button>
 		</form>
