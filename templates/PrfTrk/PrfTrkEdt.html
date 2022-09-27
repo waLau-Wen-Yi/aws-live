@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<title>Performance Tracker</title>
+<center>
+    <h1 style="text-align:center">
+        <font color="black" size="5" style="font-family: avenir">
+            <font color="black" size="5" style="font-family: avenir">
+                <font color="black" size="5" style="font-family: avenir">
+                    <font color="black" size="5" style="font-family: avenir"><span style="color:#3498db;"><span
+                                style="font-size:26px;"><strong><span style="font-family: avenir;">Performance
+                                        Tracker</span></strong></span></span></font>
+                </font>
+            </font>
+        </font>
+    </h1>
+
+    <hr />
+    <form action="/edtempdtl" id="emp_id_form" method="get">
+        <p>Employee ID: &nbsp; <input autofocus="" name="emp_id" size="40"
+                style="width:100px;height:30px;font-size:14pt;" type="text" /> <strong><button formaction=""
+                    style="background: grey; height: 40px; width: 100px; color:white; font:oblique;"
+                    type="submit">SEARCH</button> </strong></p>
+    </form>
+
+    <hr />&nbsp;
+    <table border="1" cellpadding="1" cellspacing="1" style="width:500px;">
+        <tbody>
+            <tr>
+                <td colspan="2" style="text-align: center; width: 100%;">{{ imgurl }}</td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black" size="5" style="font-family: avenir">ID : </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir"><strong>{{ id }}</strong></font>
+                        </font>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black" size="5" style="font-family: avenir">Name :</font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir"><strong>{{ fname }} {{ lname }}</strong></font>
+                        </font>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black" size="5" style="font-family: avenir">Position : </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir"><strong>{{ position }}</strong></font>
+                        </font>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black" size="5" style="font-family: avenir">Join Date :</font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir"><strong>{{ jdate }}</strong></font>
+                        </font>
+                    </font>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir">Goal :</font>
+                        </font>
+                    </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <input autofocus="" name="prf_goal" size="40" value="{{ prf_goal }}"
+                style="width:100px;height:30px;font-size:14pt;" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir">Objective :</font>
+                        </font>
+                    </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <input autofocus="" name="prf_obj" size="40" value="{{ prf_obj }}"
+                style="width:100px;height:30px;font-size:14pt;" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir">Grade :</font>
+                        </font>
+                    </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <input autofocus="" name="prf_grade" size="40" value="{{ prf_grade }}"
+                style="width:100px;height:30px;font-size:14pt;" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir">Pros :</font>
+                        </font>
+                    </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <input autofocus="" name="prf_pros" size="40" value="{{ prf_pros }}"
+                style="width:100px;height:30px;font-size:14pt;" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 30%;">
+                    <font color="black">
+                        <font size="5">
+                            <font style="font-family:avenir">Cons :</font>
+                        </font>
+                    </font>
+                </td>
+                <td style="text-align: center; width: 70%;">
+                    <input autofocus="" name="prf_cons" size="40" value="{{ prf_cons }}"
+                style="width:100px;height:30px;font-size:14pt;" type="text" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</center>
+
+<center>
+    <p>
+        <form action="/prftrkedt" method="get">
+            <input autofocus="" name="emp_id" size="40" value="{{ emp_id }}"
+                style="width:100px;height:30px;font-size:14pt;" type="hidden" />
+            <button
+                        style="background:grey; height:45px; width:200px; color:white; font:oblique"
+                        type="submit">EDIT</button>
+            </form>
+    </p>
+
+    <form action="/" method="post">
+        <font color="black" size="5" style="font-family: avenir">
+            <button style="background: grey; height: 45px; width: 200px; color:white; font:oblique;" type="submit">MAIN
+                MENU</button> &nbsp;<button formaction="/empmng"
+                style="background: grey; height: 45px; width: 200px; color:white; font:oblique;"
+                type="submit">BACK</button> &nbsp;
+        </font>
+    </form>
+</center>
+</html>
