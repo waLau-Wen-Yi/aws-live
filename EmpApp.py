@@ -225,11 +225,11 @@ def PrfTrk():
                 lname = empData[0][3],
                 position = empData[0][4],
                 jdate = empData[0][7],
-                goal = prfData[0][2],
-                objective = prfData[0][3],
-                grade = prfData[0][4],
-                pros = prfData[0][5],
-                cons = prfData[0][6]
+                goal = prfData[0][1],
+                objective = prfData[0][2],
+                grade = prfData[0][3],
+                pros = prfData[0][4],
+                cons = prfData[0][5]
                 )
             else:
                 return render_template(routePage,
