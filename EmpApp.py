@@ -33,7 +33,7 @@ def about():
 #@@@@@@@@@@Employee Management
 @app.route("/empmng", methods=['GET', 'POST'])
 def EmpMng():
-    return render_template('[!]EditEmpDetails.html')
+    return render_template('[!]EmpMngHome.html')
 
 @app.route("/shwempdtl", methods=['GET', 'POST'])
 def ShwEmpDtl():
