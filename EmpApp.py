@@ -244,7 +244,39 @@ def PrfTrk():
 
 @app.route('/prftrkedt', methods=['GET'])
 def PrfTrkEdt():
-    return render_template('/PrfTrk/PrfTrkEdt.html')
+    routePage = "/PrfTrk/PrfTrkEdt.html"
+    cursor = db_conn.cursor()
+    emp_id = request.args['emp_id']
+    qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
+    if qryRslt == 0:
+        return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
+    else:
+        empData = cursor.fetchall()
+        goal_id = 'prf{}'.format(emp_id)
+        qryRslt = cursor.execute("SELECT * FROM performance WHERE prf_id = %s", (goal_id))
+        if (qryRslt == 1):
+            prfData = cursor.fetchall()
+            return render_template(routePage,
+            id = empData[0][0],
+            fname = empData[0][2],
+            lname = empData[0][3],
+            position = empData[0][4],
+            jdate = empData[0][7],
+            goal = prfData[0][1],
+            objective = prfData[0][2],
+            grade = prfData[0][3],
+            pros = prfData[0][4],
+            cons = prfData[0][5]
+            )
+        else:
+            return render_template(routePage,
+            id = empData[0][0],
+            fname = empData[0][2],
+            lname = empData[0][3],
+            position = empData[0][4],
+            jdate = empData[0][7],
+            goal = "DATA NOT FOUNDED"
+            )
 
 #DON'T TOUCH!
 if __name__ == '__main__':
