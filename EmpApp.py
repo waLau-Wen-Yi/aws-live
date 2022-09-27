@@ -90,7 +90,7 @@ def AddEmp():
                     custombucket,
                     emp_image_file_name_in_s3)
 
-                cursor.execute("UPDATE employee SET imgurl = (%s) WHERE emp_id = (%s)", object_url, emp_id)
+                cursor.execute("UPDATE employee SET imgurl = (%s) WHERE id = (%s)", object_url, emp_id)
                 db_conn.commit()
 
             except Exception as e:
@@ -124,7 +124,7 @@ def ShwEmpDtl():
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
-        qryRslt = cursor.execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
             return render_template(routePage, id = "DOES NOT EXISTED, PLEASE SEARCH ANOTHER ID")
         else:
@@ -151,7 +151,7 @@ def EdtEmpDtl():
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
-        qryRslt = cursor.execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
             return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
         else:
@@ -178,7 +178,7 @@ def RmvEmp():
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
         emp_id = request.args['emp_id']
-        qryRslt = cursor.execute("SELECT * FROM employee WHERE emp_id = (%s)", (emp_id))
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
         if qryRslt == 0:
             return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
         else:
@@ -197,7 +197,7 @@ def RmvEmpCmfrm():
     routePage = "/EmpMng/RemoveEmp.html"
     cursor = db_conn.cursor()
     emp_id = request.args['emp_id']
-    qryRslt = cursor.execute("DELETE FROM employee WHERE emp_id = %s", (emp_id))
+    qryRslt = cursor.execute("DELETE FROM employee WHERE id = %s", (emp_id))
     if qryRslt == 1:
         return render_template(routePage, id = "ID ({}) HAS BEEN DELETED".format(emp_id))
     else:
