@@ -91,6 +91,10 @@ def EdtEmpDtl():
              )
     return render_template(routePage)
 
+@app.route("/rgsemp", methods=['GET', 'POST'])
+def RgsEmp():
+    return render_template('/EmpMng/[!]RegisEmp.html')
+
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
         emp_id = request.form['emp_id']
