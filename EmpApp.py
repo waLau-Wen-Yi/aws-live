@@ -54,7 +54,7 @@ def AddEmp():
         emp_interest = request.form['emp_interest']
         emp_dob = request.form['emp_dob']
         emp_skills = request.form['emp_skills']
-        emp_image_file = request.files['emp_image_file']
+        emp_image_file = request.files['image_file']
 
         insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
