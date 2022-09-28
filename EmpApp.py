@@ -193,7 +193,30 @@ def EdtEmp():
         (emp_fname, emp_lname, emp_position, emp_phone, emp_email, emp_jdate, emp_salary, emp_location, emp_interest, emp_dob, emp_skills, emp_id))
     db_conn.commit()
 
-    EdtEmpDtl(emp_id)
+    routePage = "/EmpMng/EditEmpDetails.html"
+    cursor = db_conn.cursor()
+    if (request.method == 'GET'):
+        emp_id = request.args['emp_id']
+        qryRslt = cursor.execute("SELECT * FROM employee WHERE id = (%s)", (emp_id))
+        if qryRslt == 0:
+            return render_template(routePage, id = "DATA NOT FOUNDED, PLEASE SEARCH ANOTHER ID")
+        else:
+            empData = cursor.fetchall()
+            return render_template(routePage,
+             id = empData[0][0], 
+             fname = empData[0][2],
+             lname = empData[0][3],
+             position = empData[0][4],
+             phone = empData[0][5],
+             email = empData[0][6],
+             jdate = empData[0][7],
+             salary = empData[0][8],
+             location = empData[0][9],
+             interest = empData[0][10],
+             dob = empData[0][11],
+             skills = empData[0][12]
+             )
+    return render_template(routePage, id = passedid)
 
 @app.route('/rmvemp', methods=['GET', 'POST'])
 def RmvEmp():
