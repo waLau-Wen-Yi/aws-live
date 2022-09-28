@@ -172,6 +172,25 @@ def EdtEmpDtl():
              )
     return render_template(routePage)
 
+@app.route('/edtemp', methods=['POST'])
+def EdtEmp():
+    emp_fname = request.form['emp_fname']
+    emp_lname = request.form['emp_lname']
+    emp_position = request.form['emp_position']
+    emp_id = request.form['emp_id']
+    emp_phone = request.form['emp_phone']
+    emp_email = request.form['emp_email']
+    emp_jdate = request.form['emp_jdate']
+    emp_salary = request.form['emp_salary']
+    emp_location = request.form['emp_location']
+    emp_interest = request.form['emp_interest']
+    emp_dob = request.form['emp_dob']
+    emp_skills = request.form['emp_skills']
+    cursor.execute(
+        "UPDATE employee SET fname = (%s), lname = (%s), position = (%s), phone = (%s), email = (%s), jdate = (%s), salary = (%s), location = (%s), interest = (%s), dob = (%s), skills = (%s) WHERE id = (%s)",
+        (emp_fname, emp_lname, emp_position, emp_phone, emp_email, emp_jdate, emp_salary, emp_location, emp_interest, emp_dob, emp_skills, emp_id))
+    db_conn.commit()
+
 @app.route('/rmvemp', methods=['GET', 'POST'])
 def RmvEmp():
     routePage = "/EmpMng/RemoveEmp.html"
