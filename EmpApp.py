@@ -146,7 +146,7 @@ def ShwEmpDtl():
     return render_template(routePage, id = "")
 
 @app.route("/edtempdtl", methods=['GET', 'POST'])
-def EdtEmpDtl():
+def EdtEmpDtl(passedid = ""):
     routePage = "/EmpMng/EditEmpDetails.html"
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
@@ -170,7 +170,7 @@ def EdtEmpDtl():
              dob = empData[0][11],
              skills = empData[0][12]
              )
-    return render_template(routePage)
+    return render_template(routePage, id = passedid)
 
 @app.route('/edtemp', methods=['POST'])
 def EdtEmp():
@@ -186,10 +186,14 @@ def EdtEmp():
     emp_interest = request.form['emp_interest']
     emp_dob = request.form['emp_dob']
     emp_skills = request.form['emp_skills']
+
+    cursor = db_conn.cursor()
     cursor.execute(
         "UPDATE employee SET fname = (%s), lname = (%s), position = (%s), phone = (%s), email = (%s), jdate = (%s), salary = (%s), location = (%s), interest = (%s), dob = (%s), skills = (%s) WHERE id = (%s)",
         (emp_fname, emp_lname, emp_position, emp_phone, emp_email, emp_jdate, emp_salary, emp_location, emp_interest, emp_dob, emp_skills, emp_id))
     db_conn.commit()
+
+    EdtEmpDtl(emp_id)
 
 @app.route('/rmvemp', methods=['GET', 'POST'])
 def RmvEmp():
