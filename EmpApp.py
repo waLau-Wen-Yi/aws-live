@@ -146,7 +146,7 @@ def ShwEmpDtl():
     return render_template(routePage, id = "")
 
 @app.route("/edtempdtl", methods=['GET', 'POST'])
-def EdtEmpDtl(passedid = ""):
+def EdtEmpDtl():
     routePage = "/EmpMng/EditEmpDetails.html"
     cursor = db_conn.cursor()
     if (request.method == 'GET'):
@@ -170,7 +170,7 @@ def EdtEmpDtl(passedid = ""):
              dob = empData[0][11],
              skills = empData[0][12]
              )
-    return render_template(routePage, id = passedid)
+    return render_template(routePage)
 
 @app.route('/edtemp', methods=['POST'])
 def EdtEmp():
@@ -216,7 +216,7 @@ def EdtEmp():
              dob = empData[0][11],
              skills = empData[0][12]
              )
-    return render_template(routePage, id = passedid)
+    return render_template(routePage)
 
 @app.route('/rmvemp', methods=['GET', 'POST'])
 def RmvEmp():
