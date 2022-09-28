@@ -5,6 +5,7 @@ from pymysql import connections
 import os
 import boto3
 from config import *
+import datetime
 
 app = Flask(__name__)
 
@@ -48,7 +49,7 @@ def AddEmp():
         emp_id = request.form['emp_id']
         emp_phone = request.form['emp_phone']
         emp_email = request.form['emp_email']
-        emp_jdate = request.form['emp_jdate']
+        emp_jdate = datetime.date.today()
         emp_salary = request.form['emp_salary']
         emp_location = request.form['emp_location']
         emp_interest = request.form['emp_interest']
@@ -56,19 +57,18 @@ def AddEmp():
         emp_skills = request.form['emp_skills']
         emp_image_file = request.files['image_file']
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        insert_sql = "INSERT INTO employee (id, fname, lname, position, phone, email, jdate, salary, location, interest, dob, skills) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
 
         if emp_image_file.filename == "":
             return "Please select a file"
 
         try:
-
             cursor.execute(insert_sql, 
-                (emp_id, "", emp_fname,
-                 emp_lname, emp_position, emp_phone,
-                  emp_email, emp_jdate, emp_salary,
-                   emp_location, emp_interest, emp_dob, emp_skills))
+                (emp_id, emp_fname, emp_lname,
+                emp_position, emp_phone, emp_email, emp_jdate,
+                emp_salary, emp_location, emp_interest, emp_dob,
+                emp_skills))
             db_conn.commit()
             # Uplaod image file in S3 #
             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_profile_pic"
